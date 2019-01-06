@@ -23,7 +23,10 @@ class ViewController: NSViewController {
     var localIP :String = ""
     var port :String = "80"
     var serverStarted = true
-    var selectedPath = ""
+    var selectedPath:String = ""
+    // let selectedPathURL = selectedPath
+    
+    let url = URL(fileURLWithPath: "" , isDirectory: true)
     
     @IBOutlet weak var makeListforHan: NSButton!
     @IBOutlet weak var serverLblStat: NSTextField!
@@ -45,17 +48,30 @@ class ViewController: NSViewController {
                 self.selectedPath = openPanel.url!.path
                 // do whatever you what with the file path
                 self.selectedPathLabel.stringValue = self.selectedPath
+                print("User has selected : \(self.selectedPath)")
+                
+                
             }
             openPanel.close()
             
         }
     }
+    
 
+    func showFilewpkg(){
+        
+            
+        
+        
+
+    }
+    
     @IBAction func openFolder(_ sender: NSButton) {
         openPanel()
     }
     
  
+    
     
     // Open Network preference
     @IBAction func openNetworkBtn(_ sender: Any) {NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Library/PreferencePanes/Network.prefPane"))}
