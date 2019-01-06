@@ -720,7 +720,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvK-3A-sNg">
-                                <rect key="frame" x="343" y="8" width="163" height="22"/>
+                                <rect key="frame" x="405" y="8" width="101" height="22"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" alignment="center" title="Version 0.1" bezelStyle="round" id="rLS-7C-5E0">
                                     <font key="font" metaFont="miniSystem"/>
@@ -734,7 +734,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="PKG List" identifier="" id="ZVS-bb-cVr">
-                                        <view key="view" id="FIg-6d-sW5">
+                                        <view key="view" ambiguous="YES" id="FIg-6d-sW5">
                                             <rect key="frame" x="10" y="33" width="480" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -753,6 +753,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="openFolder:" target="XfG-lQ-9wD" id="Oqe-bp-BNa"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMM-uM-9s8">
                                                     <rect key="frame" x="331" y="185" width="144" height="32"/>
@@ -899,7 +902,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Settings" identifier="" id="6gA-28-DEi">
-                                        <view key="view" ambiguous="YES" id="WEi-qX-6qN">
+                                        <view key="view" id="WEi-qX-6qN">
                                             <rect key="frame" x="10" y="33" width="480" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1078,12 +1081,22 @@
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bn7-Du-ULq">
+                                <rect key="frame" x="191" y="8" width="206" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" alignment="center" title="Please select a path" bezelStyle="round" id="dT6-0E-nig">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="localIPTextField" destination="TK6-y6-Qv5" id="QrZ-4h-jEe"/>
                         <outlet property="makeListforHan" destination="1vu-Eg-Sha" id="iWb-NM-mEu"/>
                         <outlet property="portTextField" destination="jBp-4R-vP2" id="AoR-9Q-Aud"/>
+                        <outlet property="selectedPathLabel" destination="Bn7-Du-ULq" id="nek-KP-UQU"/>
                         <outlet property="serverLblStat" destination="4OE-WD-dTy" id="Jpr-VC-03A"/>
                         <outlet property="test" destination="hFo-6I-CzP" id="Soa-Ll-hvi"/>
                     </connections>
