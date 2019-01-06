@@ -37,7 +37,7 @@ class ViewController: NSViewController {
     
 @IBAction func fivepxGit(_ sender: Any) {NSWorkspace.shared.open(URL(string: "https://github.com/FivePixels")!)}
     @IBAction func whenSrvBtnPressed(_ sender: NSButton) {
-        let portInt = UInt16(port)
+         let portInt = UInt16(port)
         
         if serverStarted == true {
             
@@ -72,7 +72,7 @@ class ViewController: NSViewController {
             // -----
             sender.title = "Stop server"
             serverLblStat.textColor = NSColor.green
-            serverLblStat.stringValue = "Server running"
+            serverLblStat.stringValue = "Server running on port \(port)"
             serverStarted = !serverStarted;
         }
         
@@ -96,14 +96,16 @@ class ViewController: NSViewController {
     }
     
     @IBAction func serverSettingsSaveBtn(_ sender: NSButton) {
-        localIP = localIPTextField.stringValue
-        port = portTextField.stringValue
-        if localIP != "" || port != "" {
+           if serverStarted != true {test.stringValue = " You can't change PORT when the server has started"}
+         else if localIPTextField.stringValue != "" && portTextField.stringValue != "" {
+            localIP = localIPTextField.stringValue
+            port = portTextField.stringValue
         test.stringValue = "Local IP set to \(localIP) and port to \(port)"
-        makeListforHan.isEnabled = true
             
+        makeListforHan.isEnabled = true}
+        
+      
             
-        }
         else {test.stringValue = "Error ! Both fields must be filled in ! "
             makeListforHan.isEnabled = false
         }
