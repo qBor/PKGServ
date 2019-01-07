@@ -914,17 +914,8 @@
                                                         <font key="font" metaFont="cellTitle"/>
                                                     </buttonCell>
                                                 </button>
-                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TK6-y6-Qv5">
-                                                    <rect key="frame" x="142" y="162" width="145" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="localhost" bezelStyle="round" id="1uK-fJ-5yC">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBp-4R-vP2">
-                                                    <rect key="frame" x="310" y="162" width="65" height="22"/>
+                                                    <rect key="frame" x="244" y="162" width="65" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="8486" bezelStyle="round" id="TLI-Dx-vvs">
                                                         <font key="font" metaFont="system"/>
@@ -932,17 +923,8 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTH-CL-Nbn">
-                                                    <rect key="frame" x="103" y="162" width="39" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="IP" id="c8T-U7-ypE">
-                                                        <font key="font" metaFont="system" size="14"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nR8-uL-vUl">
-                                                    <rect key="frame" x="291" y="162" width="13" height="22"/>
+                                                    <rect key="frame" x="225" y="162" width="13" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title=":" id="YCH-WF-bgD">
                                                         <font key="font" metaFont="system" size="14"/>
@@ -962,7 +944,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2uj-3m-D4y">
-                                                    <rect key="frame" x="385" y="159" width="25" height="25"/>
+                                                    <rect key="frame" x="319" y="159" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="woB-nF-QAU">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -992,6 +974,15 @@
                                                         <action selector="openNetworkBtn:" target="XfG-lQ-9wD" id="7u8-4A-r4b"/>
                                                     </connections>
                                                 </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTH-CL-Nbn">
+                                                    <rect key="frame" x="131" y="162" width="128" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="192.168.0.24" id="c8T-U7-ypE">
+                                                        <font key="font" metaFont="system" size="14"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1093,7 +1084,6 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="localIPTextField" destination="TK6-y6-Qv5" id="QrZ-4h-jEe"/>
                         <outlet property="makeListforHan" destination="1vu-Eg-Sha" id="iWb-NM-mEu"/>
                         <outlet property="portTextField" destination="jBp-4R-vP2" id="AoR-9Q-Aud"/>
                         <outlet property="selectedPathLabel" destination="Bn7-Du-ULq" id="nek-KP-UQU"/>
