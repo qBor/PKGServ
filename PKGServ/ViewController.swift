@@ -36,6 +36,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var test: NSTextField!
     @IBOutlet weak var selectedPathLabel: NSTextField!
     
+    @IBOutlet weak var localIPLabel: NSTextField!
     
     func getWiFiAddress() -> String? {
         var address : String?
@@ -211,7 +212,7 @@ class ViewController: NSViewController {
         // Do any additional setup after loading the view.
         if let addr = getWiFiAddress() {
             print(addr)
-            localIPTextField.stringValue = addr
+            localIPLabel.stringValue = addr
         } else {
             print("No WiFi address")
         }
