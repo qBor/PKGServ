@@ -7,7 +7,7 @@
 //
 // Cocoa : https://github.com/httpswift/swifter
 
-// Tool made with the help of FivePixel
+// Tool made with the help of FivePixels
 // https://github.com/FivePixels
 
 import Cocoa
@@ -22,7 +22,7 @@ class ViewController: NSViewController {
     let server = HttpServer()
     var localIP :String = ""
     var port :String = "80"
-    var serverStarted = true
+    var serverStarted = false
     var selectedPath:String = ""
     // let selectedPathURL = selectedPath
     
@@ -35,46 +35,40 @@ class ViewController: NSViewController {
     @IBOutlet weak var test: NSTextField!
     @IBOutlet weak var selectedPathLabel: NSTextField!
     
+    func presentFolderSelection() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
+        panel.canCreateDirectories = false
+        panel.title = "Select folder containing PKG file"
+        
+        panel.beginSheetModal(for:self.view.window!) { (response) in
+            if response.rawValue == NSFileHandlingPanelOKButton {
+                self.selectedPath = panel.url!.path
+                // do whatever you what with the file path
+                self.selectedPathLabel.stringValue = self.selectedPath
+                print("User has selected : \(self.selectedPath)")
+            }
+            panel.close()
+    }
+    }
+    
     func openPanel() {
-        if serverStarted != true {
+        if serverStarted == true {
             let alert = NSAlert()
             alert.alertStyle = .critical
             alert.messageText = "Server running"
             alert.informativeText = "You cannot change the folder when the server is started"
             alert.runModal()
-            
-            
-        }
-        else {
-            let openPanel = NSOpenPanel()
-            openPanel.canChooseFiles = false
-            openPanel.allowsMultipleSelection = false
-            openPanel.canChooseDirectories = true
-            openPanel.canCreateDirectories = false
-            openPanel.title = "Select PKG folder"
-            
-            openPanel.beginSheetModal(for:self.view.window!) { (response) in
-                if response.rawValue == NSFileHandlingPanelOKButton {
-                    self.selectedPath = openPanel.url!.path
-                    // do whatever you what with the file path
-                    self.selectedPathLabel.stringValue = self.selectedPath
-                    print("User has selected : \(self.selectedPath)")
-                    
-                    
-                }
-                openPanel.close()
-                
-            }
+        } else {
+            presentFolderSelection()
         }
     }
     
 
     func showFilewpkg(){
-        
-            
-        
-        
-
+        //?
     }
     
     @IBAction func openFolder(_ sender: NSButton) {
@@ -95,71 +89,54 @@ class ViewController: NSViewController {
     
     // Button to start/stop server
     @IBAction func whenSrvBtnPressed(_ sender: NSButton) {
-         let portInt = UInt16(port)
-        
-        if serverStarted == true {
-            
-            if(selectedPath == "") {
+        let portInt = UInt16(port)
+            if(selectedPath == "") { // if the user hasn't defined a path, make them do so.
                 let alert = NSAlert()
                 alert.alertStyle = .critical
                 alert.messageText = "No selected folder"
                 alert.informativeText = "Before starting the server, you must choose the folder containing the PKG."
                 alert.runModal()
-                openPanel()
-                
-            }
-            else {
-            server["/PKG/:path"] = shareFilesFromDirectory(selectedPath)
-            server["/"] = scopes {
-                html {
-                    body {
-                        center {
-                            img { src = "http://www.psx-place.com/styles/nerva/xenforo/logo.png" }
-                            h1 {
-                                inner="Welcome to the PS3 PKGServer"
+                presentFolderSelection()
+            } else if serverStarted == false && selectedPath != "" { // if the server isn't started and the path has been defined, go ahead and start the server.
+                serverStarted = !serverStarted
+                server["/PKG/:path"] = shareFilesFromDirectory(selectedPath)
+                server["/"] = scopes {
+                    html {
+                        body {
+                            center {
+                                img { src = "http://www.psx-place.com/styles/nerva/xenforo/logo.png" }
+                                h1 {
+                                    inner="Welcome to the PS3 PKGServer"
+                                }
+                                p {inner="Made by @kevxxf with help of @FivePixel"}
+                                
                             }
-                            p {inner="Made by @kevxxf with help of @FivePixel"}
-                            
                         }
                     }
                 }
-            }
-            server["/files/:path"] = directoryBrowser("/")
-            
-            
-            do {
-                try server.start(portInt!, forceIPv4: true)
-                print("Server has started ( port = \(try server.port()) ). Try to connect now...")
-                
-            } catch {
-                print("Server start error: \(error)")
-            }
-                // -----
-                sender.title = "Stop server"
+                server["/files/:path"] = directoryBrowser("/")
+                do {
+                    try server.start(portInt!, forceIPv4: true)
+                    print("Server is live on port \(try server.port()).")
+                    
+                } catch {
+                    print("Server start error: \(error)")
+                }
+                sender.title = "Stop Server"
                 serverLblStat.textColor = NSColor.green
                 serverLblStat.stringValue = "Server running on port \(port)"
-                serverStarted = !serverStarted;
-            }
-
-            
-         
-        }
-        
-        else {
-            
-            server.stop()
-            
-
-            // -----------
-            sender.title = "Start server"
-            serverLblStat.textColor = NSColor.red
-            serverLblStat.stringValue = "Server stopped"
-            serverStarted = !serverStarted;
+            } else if serverStarted { // if the server is already running when the button is pressed, stop the server.
+                serverStarted = !serverStarted
+                server.stop()
+                print("Server succesfully stopped.")
+                sender.title = "Start Server"
+                serverLblStat.textColor = NSColor.red
+                serverLblStat.stringValue = "Server stopped"
         }
     }
     
     @IBAction func serverSettingsSaveBtn(_ sender: NSButton) {
-           if serverStarted != true {test.stringValue = " You can't change PORT when the server has started"}
+           if serverStarted == true {test.stringValue = " You can't change PORT when the server has started"}
          else if localIPTextField.stringValue != "" && portTextField.stringValue != "" {
             localIP = localIPTextField.stringValue
             port = portTextField.stringValue

@@ -734,7 +734,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="PKG List" identifier="" id="ZVS-bb-cVr">
-                                        <view key="view" ambiguous="YES" id="FIg-6d-sW5">
+                                        <view key="view" id="FIg-6d-sW5">
                                             <rect key="frame" x="10" y="33" width="480" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -902,7 +902,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Settings" identifier="" id="6gA-28-DEi">
-                                        <view key="view" id="WEi-qX-6qN">
+                                        <view key="view" ambiguous="YES" id="WEi-qX-6qN">
                                             <rect key="frame" x="10" y="33" width="480" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -917,7 +917,7 @@
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TK6-y6-Qv5">
                                                     <rect key="frame" x="142" y="162" width="145" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="192.168.0.XX" bezelStyle="round" id="1uK-fJ-5yC">
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="localhost" bezelStyle="round" id="1uK-fJ-5yC">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
