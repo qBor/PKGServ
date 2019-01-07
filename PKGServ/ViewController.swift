@@ -36,24 +36,35 @@ class ViewController: NSViewController {
     @IBOutlet weak var selectedPathLabel: NSTextField!
     
     func openPanel() {
-        let openPanel = NSOpenPanel()
-        openPanel.canChooseFiles = false
-        openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = true
-        openPanel.canCreateDirectories = false
-        openPanel.title = "Select PKG folder"
-        
-        openPanel.beginSheetModal(for:self.view.window!) { (response) in
-            if response.rawValue == NSFileHandlingPanelOKButton {
-                self.selectedPath = openPanel.url!.path
-                // do whatever you what with the file path
-                self.selectedPathLabel.stringValue = self.selectedPath
-                print("User has selected : \(self.selectedPath)")
-                
+        if serverStarted != true {
+            let alert = NSAlert()
+            alert.alertStyle = .critical
+            alert.messageText = "Server running"
+            alert.informativeText = "You cannot change the folder when the server is started"
+            alert.runModal()
+            
+            
+        }
+        else {
+            let openPanel = NSOpenPanel()
+            openPanel.canChooseFiles = false
+            openPanel.allowsMultipleSelection = false
+            openPanel.canChooseDirectories = true
+            openPanel.canCreateDirectories = false
+            openPanel.title = "Select PKG folder"
+            
+            openPanel.beginSheetModal(for:self.view.window!) { (response) in
+                if response.rawValue == NSFileHandlingPanelOKButton {
+                    self.selectedPath = openPanel.url!.path
+                    // do whatever you what with the file path
+                    self.selectedPathLabel.stringValue = self.selectedPath
+                    print("User has selected : \(self.selectedPath)")
+                    
+                    
+                }
+                openPanel.close()
                 
             }
-            openPanel.close()
-            
         }
     }
     
